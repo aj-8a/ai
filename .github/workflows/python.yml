@@ -24,6 +24,6 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Compile Python files
-        run: python -m py_compile aajimin.py test_aajimin.py
+        run: python -m py_compile aajimin.py offline_ai.py web_app.py test_aajimin.py test_offline_ai.py
       - name: Run unit tests
         run: python -m unittest -v
