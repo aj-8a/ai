@@ -75,17 +75,17 @@ def chat(model_path: Path, context: int = 4096, threads: int = 4) -> int:
             print("Conversation cleared.\n")
             continue
 
-        prompt = build_prompt(history[-12:], user_text)
+        messages = [{"role": "system", "content": SYSTEM_PROMPT}]
+        messages.extend(history[-12:])
+        messages.append({"role": "user", "content": user_text})
         try:
-            result = model.create_completion(
-                prompt,
+            result = model.create_chat_completion(
+                messages=messages,
                 max_tokens=1024,
                 temperature=0.7,
                 top_p=0.9,
-                stop=["<|user|>", "<|system|>"],
-                echo=False,
             )
-            answer = result["choices"][0]["text"].strip()
+            answer = result["choices"][0]["message"]["content"].strip()
         except Exception as exc:
             print(f"Generation error: {exc}", file=sys.stderr)
             continue
