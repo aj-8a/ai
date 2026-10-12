@@ -1,6 +1,6 @@
 # ⚡ Aajimin AI — Offline Local Assistant
 
-**This repository contains runnable AI code, not just documentation.** Aajimin AI can load a language model stored on your computer and chat with it locally. It does not need an API key, a cloud account, or an internet connection during inference.
+**This repository contains a working browser chat app backed by a language model on your computer—not just documentation.** Open the app in your browser, type a prompt, and the model generates a response locally. No API key, cloud account, or internet connection is needed during inference.
 
 <p align="center">
   <img src="https://img.shields.io/badge/AI-Local%20Inference-7C3AED?style=for-the-badge" alt="Local inference">
@@ -11,7 +11,7 @@
 
 ## What it actually does
 
-- **Local AI chat:** runs a GGUF language model on your own CPU (and supported acceleration where your runtime is built for it).
+- **Browser AI app:** a chat interface with message bubbles, prompt shortcuts, conversation reset, and responsive styling.\n- **Local AI chat:** runs a GGUF language model on your own CPU (and supported acceleration where your runtime is built for it).
 - **Conversation memory:** keeps recent turns in the current terminal session; `/clear` resets them.
 - **Code intelligence:** analyzes Python source using the Python AST and checks for selected bugs and risky patterns.
 - **Project scan:** recursively scans a Python project and can export a JSON report.
@@ -84,7 +84,7 @@ The scanner does not execute inspected files. Its findings are rule-based checks
 
 | File | Purpose |
 | --- | --- |
-| `offline_ai.py` | Actual local LLM chat using a GGUF model |
+| `web_app.py` | Browser interface for local AI chat, served only on localhost |\n| `offline_ai.py` | Terminal chat and local GGUF model loader |
 | `aajimin.py` | Offline Python analyzer, scanner, and developer CLI |
 | `test_aajimin.py` | Unit tests for the scanner and code tools |
 | `.github/workflows/python.yml` | Automated Python checks |
